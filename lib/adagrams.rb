@@ -68,7 +68,7 @@ def uses_available_letters(input, letters_in_hand)
 end
 
 
-
+# wave 3
 def score_word (word)
   letters_to_score = word.scan(/\w/)
   score = 0
@@ -96,9 +96,53 @@ def score_word (word)
       score = score + 10
     end
   end
-    return score
+  return score
+end
+
+# wave 4
+
+def highest_score_from(words)
+
+  scored_array = []
+  winners_or_ties = []
+
+  # score each word inputted
+  words.each do |word|
+    points = score_word(word)
+    scored_word = {
+      word: word,
+      score: points
+    }
+    scored_array << scored_word
+  end
+
+  # make array of all scores to find max value
+  values = []
+  scored_array.each do |item|
+    values << item[:score]
+  end
+
+  highest_score = values.max
+
+  scored_array.each do |item|
+    if item[:score] == highest_score
+      winners_or_ties << item
+    end
   end
 
 
-  # a = score_word("hello")
-  # puts a
+  if winners_or_ties.length == 1
+    return winners_or_ties.first
+  elsif
+    winners_or_ties.each do |item|
+      if item[:word].length == 10
+        return item
+      else
+        winners_or_ties.each do |item|
+          shortest_word = item[:word].min { |a, b| a.length <=> b.length }
+          return shortest_word
+        end
+      end
+    end
+  end
+end
