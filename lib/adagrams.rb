@@ -66,3 +66,39 @@ def uses_available_letters(input, letters_in_hand)
   end
   return true
 end
+
+
+
+def score_word (word)
+  letters_to_score = word.scan(/\w/)
+  score = 0
+
+  if letters_to_score.length >= 7
+    score = score + 8
+  end
+
+  letters_to_score.each do |letter|
+
+    case letter.upcase
+    when "A", "E", "I", "O", "U", "L", "N", "R", "S", "T"
+      score = score + 1
+    when "D", "G"
+      score = score + 2
+    when "B", "C", "M", "P"
+      score = score + 3
+    when "F", "H", "V", "W", "Y"
+      score = score + 4
+    when "K"
+      score = score + 5
+    when "J", "X"
+      score = score + 8
+    when "Q", "Z"
+      score = score + 10
+    end
+  end
+    return score
+  end
+
+
+  # a = score_word("hello")
+  # puts a
