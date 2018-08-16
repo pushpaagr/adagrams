@@ -101,6 +101,8 @@ end
 
 # wave 4
 
+wordy = ['MMMM', 'WWW']
+
 def highest_score_from(words)
 
   scored_array = []
@@ -122,15 +124,18 @@ def highest_score_from(words)
     values << item[:score]
   end
 
+# find highest score value
   highest_score = values.max
 
+# sort input and if score == highest score variable and put in a winner array
   scored_array.each do |item|
     if item[:score] == highest_score
       winners_or_ties << item
     end
   end
 
-
+puts "#{winners_or_ties}"
+winner = []
   if winners_or_ties.length == 1
     return winners_or_ties.first
   elsif
@@ -138,11 +143,14 @@ def highest_score_from(words)
       if item[:word].length == 10
         return item
       else
+        winners_
         winners_or_ties.each do |item|
-          shortest_word = item[:word].min { |a, b| a.length <=> b.length }
-          return shortest_word
+        ties << item[:word].length
+      end
+          return
         end
       end
     end
-  end
 end
+
+puts highest_score_from(wordy)
