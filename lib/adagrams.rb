@@ -179,18 +179,18 @@ end
 
 # wave 5
 
-
-
+# method takes input and bring it to be lowercase, opens CSV dictionary file as an array.
 def is_in_english_dict (input)
   dictionary = []
   input = input.downcase
-
+#opens CSV file of dictionary words and takes each row of data and puts it inside of an array.
   CSV.open("assets/dictionary-english.csv", "r", headers: false).each do |row|
    dictionary << row
 end
 
+# takes array of array and converts to one array
   dictionary = dictionary.flatten
-
+#checks words in dictionary if it is included returns true else false.
   if dictionary.include?(input)
     return true
   else
