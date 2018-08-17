@@ -1,3 +1,10 @@
+require 'ap'
+require 'csv'
+require 'awesome_print'
+require 'pry'
+
+
+
 #wave 1
 
 def draw_letters()
@@ -160,7 +167,7 @@ def highest_score_from(words)
     end
   end
 
-# finds the shortest length of a word in the winners_or_ties and puts the winner with the shortest word 
+# finds the shortest length of a word in the winners_or_ties and puts the winner with the shortest word
   winner_first_hash = winners_or_ties.first
   winners_or_ties.each do |item|
     if item[:word].length < winner_first_hash[:word].length
@@ -168,4 +175,25 @@ def highest_score_from(words)
     end
   end
   return winner_first_hash
+end
+
+# wave 5
+
+
+
+def is_in_english_dict (input)
+  dictionary = []
+  input = input.downcase
+
+  CSV.open("assets/dictionary-english.csv", "r", headers: false).each do |row|
+   dictionary << row
+end
+
+  dictionary = dictionary.flatten
+
+  if dictionary.include?(input)
+    return true
+  else
+    return false
+  end
 end

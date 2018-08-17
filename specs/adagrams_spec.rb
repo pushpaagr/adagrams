@@ -168,4 +168,20 @@ describe 'Adagrams' do
       expect(best_word[:score]).must_equal 18
     end
   end
+
+
+  describe'is_in_english_dict method' do
+
+    it  'true, if input is in the provided English dictionary' do
+    word = 'aardvark'
+    expect(is_in_english_dict(word)).must_equal true
+  end
+
+    it 'false, if input is not in the provided English dictionary' do
+    word = 'AAAA'
+    expect(is_in_english_dict(word)).must_equal false
+  end
+
+end
+
 end
